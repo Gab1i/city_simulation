@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8110408926297410708}
   - component: {fileID: 8110408926297410711}
   - component: {fileID: 8110408926297410710}
+  - component: {fileID: 944632436279351510}
   m_Layer: 8
   m_Name: roadL
   m_TagString: Untagged
@@ -94,6 +95,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &944632436279351510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110408926297410712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4526930c4cc4ccf81f517d79546a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8110408927009361249
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +119,7 @@ GameObject:
   - component: {fileID: 8110408927009361245}
   - component: {fileID: 8110408927009361244}
   - component: {fileID: 8110408927009361247}
+  - component: {fileID: 4563412349298327951}
   m_Layer: 8
   m_Name: roadR
   m_TagString: Untagged
@@ -188,6 +202,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4563412349298327951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110408927009361249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4526930c4cc4ccf81f517d79546a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8110408927096322536
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 8110408927959362209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 316.55914, y: 343.07, z: -96.89}
-  m_LocalScale: {x: 1, y: 1, z: 0.9035129}
+  m_LocalScale: {x: 1, y: 1, z: 61.90997}
   m_Children:
   - {fileID: 8110408927096322537}
   - {fileID: 8110408926297410713}

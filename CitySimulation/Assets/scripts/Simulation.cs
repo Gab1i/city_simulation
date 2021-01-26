@@ -16,6 +16,7 @@ public class Simulation : MonoBehaviour {
     public GameObject prefab_car;
     public GameObject prefab_john;
     public GameObject what_a_point;
+    public GameObject sun;
     
     private int TotalTime;
     public int deltaHours;
@@ -46,6 +47,9 @@ public class Simulation : MonoBehaviour {
         labelPopulation.text = city.GetComponent<Roads>().population.ToString();
 
         CheckMoves(Time);
+        
+        // sun
+        sun.transform.localRotation = Quaternion.Euler(Time, -30, 0);
     }
 
     void CheckMoves(int time) {

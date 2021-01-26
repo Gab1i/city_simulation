@@ -35,6 +35,21 @@ public class Roads : MonoBehaviour {
     private List<LineSegment> m_delaunayTriangulation;
     private Texture2D tx;
     public float freqx = 0.021f, freqy = 0.017f, offsetx = 0.43f, offsety = 0.22f;
+
+    private void DrawRiver(Color[] pixels, float[,] map) {
+        Vector2 p1;
+        Vector2 p2;
+        if (Random.Range(0, 10) > 5) {
+            p1 = new Vector2(Random.Range(0, WIDTH), 0);
+            p2 = new Vector2(Random.Range(0, WIDTH), HEIGHT-1);
+        }
+        else {
+            p1 = new Vector2(0, Random.Range(0, HEIGHT));
+            p2 = new Vector2(WIDTH - 1, Random.Range(0, HEIGHT));
+        }
+        
+        DrawLine(pixels, map, p1, p2);
+    }
     
     private float [,] createMap() {
         float [,] map = new float[WIDTH, HEIGHT];
@@ -114,12 +129,14 @@ public class Roads : MonoBehaviour {
         /* Generate Graphs */
         Delaunay.Voronoi v = new Delaunay.Voronoi(m_points, colors, new Rect (0, 0, WIDTH, HEIGHT));
         m_edges = v.VoronoiDiagram();
-        //m_spanningTree = v.SpanningTree(KruskalType.MINIMUM);
+        m_spanningTree = v.SpanningTree(KruskalType.MINIMUM);
         //m_delaunayTriangulation = v.DelaunayTriangulation();
 
         Vector2 randomOne = new Vector2(0, 0);
         Vector3 rndDir = new Vector3(0, 0, 0);
         Vector2 randomL = new Vector2(0, 0);
+
+        DrawRiver(pixels, map);
         
         /* Shows Voronoi diagram */
         Color color = Color.blue;
@@ -167,12 +184,9 @@ public class Roads : MonoBehaviour {
             }
             prefab.transform.localScale = new Vector3(1, 1, length);
             Instantiate(prefab, new Vector3(mid.x*(-10)+1000, 1, mid.y*(-10)+1000), Quaternion.LookRotation(dir));
-
-            
             
             roadSurface.BuildNavMesh();
             walkwaySurface.BuildNavMesh();
-            
         }
         
         // Instantiate a car
@@ -183,9 +197,8 @@ public class Roads : MonoBehaviour {
         Vector2 a = (randomOne*(-10.0f)+p) - (randomL*(-10)+p).normalized * 0.3f;
         Vector2 perpendicular = (new Vector2(a.y, -a.x)).normalized;
         
-        Instantiate(prefab_walker, new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000), Quaternion.LookRotation(rndDir));
+        //Instantiate(prefab_walker, new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000), Quaternion.LookRotation(rndDir));
 
-        
         mainCam.transform.position = new Vector3(randomOne.x * (-10) + 1000, 50, randomOne.y * (-10) + 1000);
         mainCam.transform.LookAt(new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000));
 
