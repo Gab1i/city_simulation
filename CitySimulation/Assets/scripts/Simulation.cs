@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -17,6 +16,11 @@ public class Simulation : MonoBehaviour {
     public GameObject prefab_john;
     public GameObject what_a_point;
     public GameObject sun;
+    public GameObject police;
+    public GameObject robber;
+
+    private int thievesStop;
+    private int currentThievesNb;
     
     private int TotalTime;
     public int deltaHours;
@@ -33,7 +37,12 @@ public class Simulation : MonoBehaviour {
 
         population = new List<Inhabitant>();
 
+        thievesStop = 0;
+        currentThievesNb = 0;
+
         assignHouseAndOffice();
+        Instantiate(police, population[0].office.transform.position, Quaternion.identity);
+        Instantiate(police, population[0].office.transform.position, Quaternion.identity);
     }
     
     void Update() {
@@ -50,6 +59,16 @@ public class Simulation : MonoBehaviour {
         
         // sun
         sun.transform.localRotation = Quaternion.Euler(Time, -30, 0);
+
+        if (Random.Range(0, 1000) > 995 && currentThievesNb <= 5) {
+            GameObject mechant = Instantiate(robber, population[2].office.transform.position, Quaternion.identity);
+            mechant.GetComponent<Robber>().OnDestroyEvnt += OnDestroyListener;
+            currentThievesNb++;
+        }
+    }
+
+    public void OnDestroyListener(MonoBehaviour instance) {
+        currentThievesNb--;
     }
 
     void CheckMoves(int time) {
@@ -139,6 +158,7 @@ public class Simulation : MonoBehaviour {
             population.Add(johnDo);
 
             johnsHome.GetComponent<Home>().inhabitants++;
+            johnsHome.GetComponent<Home>().WhosAtHome++;
             johnsWork.GetComponent<Office>().workers++;
 
             if (johnsHome.GetComponent<Home>().inhabitants >= johnsHome.GetComponent<Home>().nInhabitants) {

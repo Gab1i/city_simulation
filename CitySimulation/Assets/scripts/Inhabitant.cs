@@ -2,8 +2,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-namespace DefaultNamespace {
-    public class Inhabitant: MonoBehaviour {
+    public class Inhabitant {
         public GameObject movingAgent;
         public GameObject home;
         public GameObject office;
@@ -71,17 +70,18 @@ namespace DefaultNamespace {
                 if (atHome) {
                     atHome = false;
                     atWork = true;
+                    home.GetComponent<Home>().WhosAtHome--;
                 }
                 else {
                     atHome = true;
                     atWork = false;
+                    home.GetComponent<Home>().WhosAtHome++;
                 }
             
                 moving = false;
                 FiatLux();
-                Debug.Log("John Arrived ! ");
-                Destroy(movingAgent);
+                MonoBehaviour.Destroy(movingAgent);
             }
         }
     }
-}
+

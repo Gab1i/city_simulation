@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 2360808089274643054}
   m_Layer: 0
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: house
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nInhabitants: 4
+  lights: []
   prefab_light: {fileID: 1163859331905097892, guid: 88774047d351248a29fa6cc8d5c7f6b2,
     type: 3}
   FlatHouse: 1

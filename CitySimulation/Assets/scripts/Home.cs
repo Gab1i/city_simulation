@@ -9,6 +9,8 @@ public class Home : MonoBehaviour {
     public List<GameObject> lights;
     public GameObject prefab_light;
     public bool FlatHouse;
+    public int WhosAtHome;
+    public bool broken;
 
     public int inhabitants;
 
@@ -19,6 +21,8 @@ public class Home : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         inhabitants = 0;
+        WhosAtHome = 0;
+        broken = false;
         //SetUpLights(nInhabitants);
     }
 

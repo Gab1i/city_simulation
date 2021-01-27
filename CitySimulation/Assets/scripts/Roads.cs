@@ -16,6 +16,7 @@ public class Roads : MonoBehaviour {
     public GameObject prefab_car;
     public GameObject prefab_walker;
     public GameObject prefab_office;
+    public GameObject prefab_pedestrian_cross;
     public Material land;
     public Camera mainCam;
     public List<GameObject> habitations;
@@ -25,7 +26,7 @@ public class Roads : MonoBehaviour {
     
     const int WIDTH = 200;
     const int HEIGHT = 200;
-    const int NPOINTS = 10;
+    const int NPOINTS = 30;
 
     public int population = 0;
     public int works = 0;
@@ -184,10 +185,12 @@ public class Roads : MonoBehaviour {
             }
             prefab.transform.localScale = new Vector3(1, 1, length);
             Instantiate(prefab, new Vector3(mid.x*(-10)+1000, 1, mid.y*(-10)+1000), Quaternion.LookRotation(dir));
-            
-            roadSurface.BuildNavMesh();
-            walkwaySurface.BuildNavMesh();
+            Instantiate(prefab_pedestrian_cross, l, Quaternion.LookRotation(dir));
+            Instantiate(prefab_pedestrian_cross, r, Quaternion.LookRotation(dir));
         }
+        
+        roadSurface.BuildNavMesh();
+        walkwaySurface.BuildNavMesh();
         
         // Instantiate a car
         //Instantiate(prefab_car, new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000), Quaternion.LookRotation(rndDir));

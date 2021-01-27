@@ -15,6 +15,7 @@ public class Car : MonoBehaviour
 
     public void Awake() {
         //isOnTheWay = false;
+        _navMeshAgent.speed = 5;
         Arrived = false;
     }
 
@@ -30,10 +31,10 @@ public class Car : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             if (hit.transform.gameObject.name == "roadHL" || hit.transform.gameObject.name == "roadHR") {
-                if(_navMeshAgent.speed == 15) _navMeshAgent.speed = 40;
+                if(_navMeshAgent.speed == 5) _navMeshAgent.speed = 10;
             }
             else {
-                if(_navMeshAgent.speed == 40) _navMeshAgent.speed = 15;
+                if(_navMeshAgent.speed == 10) _navMeshAgent.speed = 5;
             }
         }
 
@@ -67,13 +68,5 @@ public class Car : MonoBehaviour
         _navMeshAgent.isStopped = false;
         isOnTheWay = true;
         _navMeshAgent.SetDestination(coord);
-    }
-    
-    void OnTriggerEnter(Collider other)
-    {
-        //Put this above all the other code so that you know it's getting called correctly.
- 
-        Debug.Log(other.gameObject.name);
- 
     }
 }
