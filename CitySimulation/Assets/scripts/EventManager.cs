@@ -7,10 +7,13 @@ public class EventManager : MonoBehaviour {
     public Car Selected;
     public Worker Selected2;
     public Camera cam;
+    public float camSpeed;
+    public float rotSpeed;
     
     // Start is called before the first frame update
     void Start() {
-        
+        camSpeed = 5;
+        rotSpeed = 5;
     }
 
     // Update is called once per frame
@@ -18,37 +21,45 @@ public class EventManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
             Clicked();
         if (Input.GetKey("q")) {
-            Vector3 p = cam.transform.position;
-            p.x -= 10;
-            cam.transform.position = p;
+            Vector3 p = cam.transform.rotation.eulerAngles;
+            p.y -= rotSpeed;
+            cam.transform.rotation = Quaternion.Euler(p);
         }
         if (Input.GetKey("d")) {
-            Vector3 p = cam.transform.position;
-            p.x += 10;
-            cam.transform.position = p;
+            Vector3 p = cam.transform.rotation.eulerAngles;
+            p.y += rotSpeed;
+            cam.transform.rotation = Quaternion.Euler(p);
+        }
+        if (Input.GetKey("o")) {
+            Vector3 p = cam.transform.rotation.eulerAngles;
+            p.x -= rotSpeed;
+            cam.transform.rotation = Quaternion.Euler(p);
+        }
+        if (Input.GetKey("l")) {
+            Vector3 p = cam.transform.rotation.eulerAngles;
+            p.x += rotSpeed;
+            cam.transform.rotation = Quaternion.Euler(p);
         }
         if (Input.GetKey("z")) {
             Vector3 p = cam.transform.position;
-            p.z += 10;
+            p.z += camSpeed;
             cam.transform.position = p;
         }
         if (Input.GetKey("s")) {
             Vector3 p = cam.transform.position;
-            p.z -= 10;
+            p.z -= camSpeed;
             cam.transform.position = p;
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
             Vector3 p = cam.transform.position;
-            p.y += 10;
+            p.y += camSpeed;
             cam.transform.position = p;
         }
         if (Input.GetKey(KeyCode.UpArrow)) {
             Vector3 p = cam.transform.position;
-            p.y -= 10;
+            p.y -= camSpeed;
             cam.transform.position = p;
         }
-  
-            
     }
 
     void MouseMove() {

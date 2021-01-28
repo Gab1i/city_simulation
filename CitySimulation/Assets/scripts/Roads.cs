@@ -26,7 +26,7 @@ public class Roads : MonoBehaviour {
     
     const int WIDTH = 200;
     const int HEIGHT = 200;
-    const int NPOINTS = 30;
+    const int NPOINTS = 20;
 
     public int population = 0;
     public int works = 0;
@@ -137,7 +137,7 @@ public class Roads : MonoBehaviour {
         Vector3 rndDir = new Vector3(0, 0, 0);
         Vector2 randomL = new Vector2(0, 0);
 
-        DrawRiver(pixels, map);
+        //DrawRiver(pixels, map);
         
         /* Shows Voronoi diagram */
         Color color = Color.blue;
@@ -202,8 +202,8 @@ public class Roads : MonoBehaviour {
         
         //Instantiate(prefab_walker, new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000), Quaternion.LookRotation(rndDir));
 
-        mainCam.transform.position = new Vector3(randomOne.x * (-10) + 1000, 50, randomOne.y * (-10) + 1000);
-        mainCam.transform.LookAt(new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000));
+        //mainCam.transform.position = new Vector3(randomOne.x * (-10) + 1000, 50, randomOne.y * (-10) + 1000);
+        //mainCam.transform.LookAt(new Vector3(randomOne.x*(-10)+1000, 1, randomOne.y*(-10)+1000));
 
         /* Apply pixels to texture */
         tx = new Texture2D(WIDTH, HEIGHT);
