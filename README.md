@@ -8,7 +8,7 @@ Ce dépôt contient mon travail dans le cadre du module **Mondes Virtuels** du p
 
 
 
-Une vidéo de présentation du projet est disponible à l'adresse suivante : https://youtube.com/
+Une vidéo de présentation du projet est disponible à l'adresse suivante : https://youtu.be/KvJOr2sJ268
 
 ## Etat du projet
 
